@@ -1,0 +1,158 @@
+<!doctype html>
+<head><meta charset="utf-8">
+<title>Unicode property escapes in regular expressions</title><script type="application/json" id="menu-search-biblio">[{"type":"op","aoid":"UnicodeMatchProperty","refId":"sec-runtime-semantics-unicodematchproperty-p","location":"","key":"UnicodeMatchProperty"},{"type":"clause","id":"sec-runtime-semantics-unicodematchproperty-p","aoid":"UnicodeMatchProperty","title":"Runtime Semantics: UnicodeMatchProperty ( _p_ )","number":"1","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"Runtime Semantics: UnicodeMatchProperty ( _p_ )"},{"type":"op","aoid":"UnicodeMatchPropertyValue","refId":"sec-runtime-semantics-unicodematchpropertyvalue-p-v","location":"","key":"UnicodeMatchPropertyValue"},{"type":"clause","id":"sec-runtime-semantics-unicodematchpropertyvalue-p-v","aoid":"UnicodeMatchPropertyValue","title":"Runtime Semantics: UnicodeMatchPropertyValue ( _p_, _v_ )","number":"2","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"Runtime Semantics: UnicodeMatchPropertyValue ( _p_, _v_ )"},{"type":"production","id":"prod-ControlLetter","name":"ControlLetter","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"ControlLetter"},{"type":"production","id":"prod-CharacterClassEscape","name":"CharacterClassEscape","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"CharacterClassEscape"},{"type":"production","id":"prod-UnicodePropertyValueExpression","name":"UnicodePropertyValueExpression","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValueExpression"},{"type":"production","id":"prod-UnicodePropertyNameCharacter","name":"UnicodePropertyNameCharacter","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyNameCharacter"},{"type":"production","id":"prod-UnicodePropertyNameCharacters","name":"UnicodePropertyNameCharacters","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyNameCharacters"},{"type":"production","id":"prod-UnicodePropertyName","name":"UnicodePropertyName","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyName"},{"type":"production","id":"prod-UnicodePropertyValueCharacter","name":"UnicodePropertyValueCharacter","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValueCharacter"},{"type":"production","id":"prod-UnicodePropertyValueCharacters","name":"UnicodePropertyValueCharacters","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValueCharacters"},{"type":"production","id":"prod-UnicodePropertyValue","name":"UnicodePropertyValue","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"UnicodePropertyValue"},{"type":"production","id":"prod-LoneUnicodePropertyNameOrValue","name":"LoneUnicodePropertyNameOrValue","namespace":"https://mathiasbynens.github.io/es-regexp-unicode-property-escapes/","location":"","key":"LoneUnicodePropertyNameOrValue"}]</script></head><body><div id="menu-toggle">☰</div><div id="menu"><div id="menu-search"><input type="text" id="menu-search-box" placeholder="Search..."><div id="menu-search-results" class="inactive"></div></div><div id="menu-toc"><ol class="toc"><li><span class="item-toggle-none"></span><a href="#sec-runtime-semantics-unicodematchproperty-p" title="Runtime Semantics: UnicodeMatchProperty ( _p_ )"><span class="secnum">1</span> RS: UnicodeMatchProperty ( <var>p</var> )</a></li><li><span class="item-toggle-none"></span><a href="#sec-runtime-semantics-unicodematchpropertyvalue-p-v" title="Runtime Semantics: UnicodeMatchPropertyValue ( _p_, _v_ )"><span class="secnum">2</span> RS: UnicodeMatchPropertyValue ( <var>p</var>, <var>v</var> )</a></li></ol></div></div><h1 class="version">Stage 1 Draft / August 22, 2016</h1><h1 class="title">Unicode property escapes in regular expressions</h1>
+<script src="ecmarkup.js" defer=""></script>
+<link rel="stylesheet" href="ecmarkup.css">
+<style>
+  ins.block {
+    font-weight: bold;
+    font-style: italic;
+  }
+  hr {
+    height: 0.25em;
+    background: #ccc;
+    border: 0;
+    margin: 2em 0;
+  }
+</style>
+
+<p><ins class="block">The syntax listed in <a href="https://tc39.github.io/ecma262/#sec-patterns">21.2.1 Patterns</a> is modified as follows.</ins></p>
+
+<emu-grammar><emu-production name="ControlLetter" type="lexical" oneof="" id="prod-ControlLetter">
+    <emu-nt><a href="#prod-ControlLetter">ControlLetter</a></emu-nt><emu-geq>::</emu-geq><emu-oneof>one of</emu-oneof><emu-rhs><emu-t>a</emu-t><emu-t>b</emu-t><emu-t>c</emu-t><emu-t>d</emu-t><emu-t>e</emu-t><emu-t>f</emu-t><emu-t>g</emu-t><emu-t>h</emu-t><emu-t>i</emu-t><emu-t>j</emu-t><emu-t>k</emu-t><emu-t>l</emu-t><emu-t>m</emu-t><emu-t>n</emu-t><emu-t>o</emu-t><emu-t>p</emu-t><emu-t>q</emu-t><emu-t>r</emu-t><emu-t>s</emu-t><emu-t>t</emu-t><emu-t>u</emu-t><emu-t>v</emu-t><emu-t>w</emu-t><emu-t>x</emu-t><emu-t>y</emu-t><emu-t>z</emu-t><emu-t>A</emu-t><emu-t>B</emu-t><emu-t>C</emu-t><emu-t>D</emu-t><emu-t>E</emu-t><emu-t>F</emu-t><emu-t>G</emu-t><emu-t>H</emu-t><emu-t>I</emu-t><emu-t>J</emu-t><emu-t>K</emu-t><emu-t>L</emu-t><emu-t>M</emu-t><emu-t>N</emu-t><emu-t>O</emu-t><emu-t>P</emu-t><emu-t>Q</emu-t><emu-t>R</emu-t><emu-t>S</emu-t><emu-t>T</emu-t><emu-t>U</emu-t><emu-t>V</emu-t><emu-t>W</emu-t><emu-t>X</emu-t><emu-t>Y</emu-t><emu-t>Z</emu-t></emu-rhs>
+</emu-production>
+<emu-production name="CharacterClassEscape" params="U" type="lexical" id="prod-CharacterClassEscape">
+    <emu-nt params="U"><a href="#prod-CharacterClassEscape">CharacterClassEscape</a><emu-mods><emu-params>[U]</emu-params></emu-mods></emu-nt><emu-geq>::</emu-geq><emu-rhs a="f0f32729"><emu-t>d</emu-t></emu-rhs>
+    <emu-rhs a="919b1483"><emu-t>D</emu-t></emu-rhs>
+    <emu-rhs a="5b9c6c6e"><emu-t>s</emu-t></emu-rhs>
+    <emu-rhs a="6952cf48"><emu-t>S</emu-t></emu-rhs>
+    <emu-rhs a="2d8b484a"><emu-t>w</emu-t></emu-rhs>
+    <emu-rhs a="ae15e851"><emu-t>W</emu-t></emu-rhs><ins>
+    <emu-rhs a="dd28fec2" constraints="+U"><emu-constraints>[+U]</emu-constraints><emu-t>p{</emu-t><emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-t>}</emu-t></emu-rhs>
+    <emu-rhs a="af7c9730" constraints="+U"><emu-constraints>[+U]</emu-constraints><emu-t>P{</emu-t><emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-t>}</emu-t></emu-rhs>
+</ins></emu-production>
+<ins><emu-production name="UnicodePropertyValueExpression" type="lexical" id="prod-UnicodePropertyValueExpression">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="b11de407"><emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-t>=</emu-t><emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt></emu-rhs>
+    <emu-rhs a="25d94190"><emu-nt><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyNameCharacter" type="lexical" id="prod-UnicodePropertyNameCharacter">
+    <emu-nt><a href="#prod-UnicodePropertyNameCharacter">UnicodePropertyNameCharacter</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="69611eb2"><emu-nt><a href="#prod-ControlLetter">ControlLetter</a></emu-nt></emu-rhs>
+    <emu-rhs a="07564b94"><emu-t>_</emu-t></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyNameCharacters" type="lexical" id="prod-UnicodePropertyNameCharacters">
+    <emu-nt><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="c1247f44"><emu-nt><a href="#prod-UnicodePropertyNameCharacter">UnicodePropertyNameCharacter</a></emu-nt><emu-nt optional=""><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyName" type="lexical" id="prod-UnicodePropertyName">
+    <emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="c0c2619f"><emu-nt><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyValueCharacter" type="lexical" id="prod-UnicodePropertyValueCharacter">
+    <emu-nt><a href="#prod-UnicodePropertyValueCharacter">UnicodePropertyValueCharacter</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="531254cc"><emu-nt><a href="#prod-UnicodePropertyNameCharacter">UnicodePropertyNameCharacter</a></emu-nt></emu-rhs>
+    <emu-rhs a="5259a431"><emu-t>0</emu-t></emu-rhs>
+    <emu-rhs a="292aa5dd"><emu-t>1</emu-t></emu-rhs>
+    <emu-rhs a="5ca73105"><emu-t>2</emu-t></emu-rhs>
+    <emu-rhs a="ec6bb6b2"><emu-t>3</emu-t></emu-rhs>
+    <emu-rhs a="58ec4a73"><emu-t>4</emu-t></emu-rhs>
+    <emu-rhs a="8fcdef77"><emu-t>5</emu-t></emu-rhs>
+    <emu-rhs a="0b64877d"><emu-t>6</emu-t></emu-rhs>
+    <emu-rhs a="ea5e07a4"><emu-t>7</emu-t></emu-rhs>
+    <emu-rhs a="7a5bd8c3"><emu-t>8</emu-t></emu-rhs>
+    <emu-rhs a="163f4308"><emu-t>9</emu-t></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyValueCharacters" type="lexical" id="prod-UnicodePropertyValueCharacters">
+    <emu-nt><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="5a208aa0"><emu-nt><a href="#prod-UnicodePropertyValueCharacter">UnicodePropertyValueCharacter</a></emu-nt><emu-nt optional=""><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a><emu-mods><emu-opt>opt</emu-opt></emu-mods></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="UnicodePropertyValue" type="lexical" id="prod-UnicodePropertyValue">
+    <emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="526a9170"><emu-nt><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt></emu-rhs>
+</emu-production></ins>
+<ins><emu-production name="LoneUnicodePropertyNameOrValue" type="lexical" id="prod-LoneUnicodePropertyNameOrValue">
+    <emu-nt><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="526a9170"><emu-nt><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt></emu-rhs>
+</emu-production></ins></emu-grammar>
+
+<hr>
+
+<p><ins class="block">The following items are appended to <a href="https://tc39.github.io/ecma262/#sec-string-literals-static-semantics-early-errors">11.8.4.1 Static Semantics: Early Errors</a>.</ins></p>
+
+<emu-grammar><emu-production name="UnicodePropertyName" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="c0c2619f"><emu-nt><a href="#prod-UnicodePropertyNameCharacters">UnicodePropertyNameCharacters</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt> does not strictly match a known Unicode property name or property alias.
+  </li>
+</ul>
+
+<emu-grammar><emu-production name="UnicodePropertyValue" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="526a9170"><emu-nt><a href="#prod-UnicodePropertyValueCharacters">UnicodePropertyValueCharacters</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt> does not strictly match a known Unicode property value or property value alias.
+  </li>
+</ul>
+
+<emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="b11de407"><emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-t>=</emu-t><emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt> strictly matches a known Unicode binary property or binary property alias.
+  </li>
+  <li>
+    It is a Syntax Error if <emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt> is not a known value or value alias for the Unicode property or property alias <emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt>.
+  </li>
+</ul>
+
+<emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="25d94190"><emu-nt><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar>
+<ul>
+  <li>
+    It is a Syntax Error if <emu-nt><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt> does not strictly match a known Unicode general category, general category alias, binary property, or binary property alias.
+  </li>
+</ul>
+
+<hr>
+
+<p><ins class="block">The following two abstract operations are appended to <a href="https://tc39.github.io/ecma262/#sec-atom">21.2.2.8 Atom</a>.</ins></p>
+
+<emu-clause id="sec-runtime-semantics-unicodematchproperty-p" aoid="UnicodeMatchProperty">
+  <h1><span class="secnum">1</span>Runtime Semantics: UnicodeMatchProperty ( <var>p</var> )<span class="utils"><span class="anchor"><a href="#sec-runtime-semantics-unicodematchproperty-p">#</a></span></span></h1>
+  <p>The abstract operation UnicodeMatchProperty takes a string parameter <var>p</var> and performs the following steps:</p>
+  <emu-alg><ol><li>Assert: <var>p</var> strictly matches a known Unicode property name or property alias.</li><li>Let <var>property</var> be that unaliased property name of <var>p</var>.</li><li>Return <var>property</var>.
+  </li></ol></emu-alg>
+  <p>Implementations must support the following Unicode properties and their property aliases as required by  <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: <code>General_Category</code>, <code>Script</code>, <code>Script_Extensions</code>, <code>Alphabetic</code>, <code>Uppercase</code>, <code>Lowercase</code>, <code>White_Space</code>, <code>Noncharacter_Code_Point</code>, <code>Default_Ignorable_Code_Point</code>, <code>Any</code>, <code>ASCII</code>, and <code>Assigned</code>. Implementations may extend Unicode property support to the remaining enumeration or binary properties.</p>
+  <emu-note><span class="note">Note</span>
+    <p>Only the canonical property names and property aliases listed in <code>PropertyAliases.txt</code> as well as the property names <code>Any</code>, <code>ASCII</code>, and <code>Assigned</code> must be recognized. For example, <code>Block</code> and <code>blk</code> are valid, but <code>block</code> or <code>Blk</code> aren’t.</p>
+  </emu-note>
+</emu-clause>
+
+<emu-clause id="sec-runtime-semantics-unicodematchpropertyvalue-p-v" aoid="UnicodeMatchPropertyValue">
+  <h1><span class="secnum">2</span>Runtime Semantics: UnicodeMatchPropertyValue ( <var>p</var>, <var>v</var> )<span class="utils"><span class="anchor"><a href="#sec-runtime-semantics-unicodematchpropertyvalue-p-v">#</a></span></span></h1>
+  <p>The abstract operation UnicodeMatchPropertyValue takes two string parameters <var>p</var> and <var>v</var> and performs the following steps:</p>
+  <emu-alg><ol><li>Assert: <var>p</var> is a canonical, unaliased Unicode property name.</li><li>Assert: <var>v</var> strictly matches a known property value or property value alias for Unicode property <var>p</var>.</li><li>Let <var>value</var> be that unaliased property value of <var>v</var>.</li><li>Return <var>value</var>.
+  </li></ol></emu-alg>
+  <p>Implementations must support any existing property values and their aliases for the following Unicode properties as required by  <a href="http://unicode.org/reports/tr18/#RL1.2">UTS18 RL1.2</a>: <code>General_Category</code>, <code>Script</code>, and <code>Script_Extensions</code>. Implementations that extend Unicode property support to remaining enumeration properties must support any existing values (including aliases) for those properties.</p>
+  <emu-note><span class="note">Note 1</span>
+    <p>Only the canonical property values and property value aliases listed in <code>PropertyValueAliases.txt</code> must be recognized. For example, <code>Super_And_Sub</code> and <code>Superscripts_And_Subscripts</code> are valid <code>Block</code> values, but <code>super_and_sub</code> and <code>Superscripts and Subscripts</code> aren’t.</p>
+  </emu-note>
+  <emu-note><span class="note">Note 2</span>
+    <p>This algorithm differs from  <a href="http://unicode.org/reports/tr44/#Matching_Symbolic">the matching rules for symbolic values listed in UAX44</a>: case,  <emu-xref href="#sec-white-space"><a href="https://tc39.github.io/ecma262/#sec-white-space">white space</a></emu-xref>, U+002D (HYPHEN-MINUS), and U+005F (LOW LINE) are not ignored, and the <code>Is</code> prefix is not supported.</p>
+  </emu-note>
+</emu-clause>
+
+<hr>
+
+<p><ins class="block">The following is appended to the list of productions in <a href="https://tc39.github.io/ecma262/#sec-characterclassescape">21.2.2.12 CharacterClassEscape</a>.</ins></p>
+
+<p>The production <emu-grammar><emu-production name="CharacterClassEscape" type="lexical" collapsed="" class=" inline">
+    <emu-nt><a href="#prod-CharacterClassEscape">CharacterClassEscape</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="a2058266"><emu-t>\P{</emu-t><emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-t>}</emu-t></emu-rhs>
+</emu-production></emu-grammar> evaluates by returning the set of all characters not included in the set returned by <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt>.</p>
+<p>The production <emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="" class=" inline">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="b11de407"><emu-nt><a href="#prod-UnicodePropertyName">UnicodePropertyName</a></emu-nt><emu-t>=</emu-t><emu-nt><a href="#prod-UnicodePropertyValue">UnicodePropertyValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar> evaluates as follows:</p>
+<emu-alg><ol><li>Let <var>p</var> be ! <emu-xref aoid="UnicodeMatchProperty"><a href="#sec-runtime-semantics-unicodematchproperty-p">UnicodeMatchProperty</a></emu-xref>(<var>UnicodePropertyName</var>).</li><li>Assert: <var>p</var> is not the name of a binary property in Unicode.</li><li>Let <var>v</var> be ! <emu-xref aoid="UnicodeMatchPropertyValue"><a href="#sec-runtime-semantics-unicodematchpropertyvalue-p-v">UnicodeMatchPropertyValue</a></emu-xref>(<var>p</var>, <var>UnicodePropertyValue</var>).</li><li>Return the set of all characters with the value <var>v</var> for Unicode property <var>p</var>.</li></ol></emu-alg>
+<p>The production <emu-grammar><emu-production name="UnicodePropertyValueExpression" type="lexical" collapsed="" class=" inline">
+    <emu-nt><a href="#prod-UnicodePropertyValueExpression">UnicodePropertyValueExpression</a></emu-nt><emu-geq>::</emu-geq><emu-rhs a="25d94190"><emu-nt><a href="#prod-LoneUnicodePropertyNameOrValue">LoneUnicodePropertyNameOrValue</a></emu-nt></emu-rhs>
+</emu-production></emu-grammar> evaluates as follows:</p>
+<emu-alg><ol><li>If ! <emu-xref aoid="UnicodeMatchPropertyValue"><a href="#sec-runtime-semantics-unicodematchpropertyvalue-p-v">UnicodeMatchPropertyValue</a></emu-xref>(<code>"General_Category"</code>, <var>LoneUnicodePropertyNameOrValue</var>) is the name of a general category in Unicode, then<ol><li>Return the set of all characters in Unicode general category <var>LoneUnicodePropertyNameOrValue</var>.</li></ol></li><li>Let <var>property</var> be ! <emu-xref aoid="UnicodeMatchProperty"><a href="#sec-runtime-semantics-unicodematchproperty-p">UnicodeMatchProperty</a></emu-xref>(<var>LoneUnicodePropertyNameOrValue</var>).</li><li>Assert: <var>property</var> is the name of a binary property in Unicode.</li><li>Return the set of all characters with the value <emu-nt>True</emu-nt> for Unicode property <var>property</var>.</li></ol></emu-alg>
+</body>
